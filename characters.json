@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Asuna",
+    "image": "https://upload.wikimedia.org/wikipedia/en/7/75/Asuna_SAO.png",
+    "rank": "Epic"
+  },
+  {
+    "name": "Hinata Hyuga",
+    "image": "https://upload.wikimedia.org/wikipedia/en/1/12/Hinata_Part_II.png",
+    "rank": "Common"
+  },
+  {
+    "name": "Nezuko Kamado",
+    "image": "https://upload.wikimedia.org/wikipedia/en/0/03/Nezuko_anime.png",
+    "rank": "Rare"
+  }
+]

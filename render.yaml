@@ -1,0 +1,12 @@
+
+services:
+  - type: web
+    name: anime-catcher-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    autoDeploy: false
+    plan: free
+    envVars:
+      - key: TOKEN
+        value: 8061519894:AAGyMFImWqRtdPvFGU0DHXWs7UszIrZGBcs
