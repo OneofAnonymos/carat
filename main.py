@@ -118,5 +118,10 @@ if __name__ == "__main__":
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("catch", catch))
     app.add_handler(CommandHandler("mycollection", mycollection))
+ from telegram.error import TelegramError
 
+async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
+    logging.error(msg="⚠️ خطا هنگام اجرای ربات:", exc_info=context.error)
+
+app.add_error_handler(error_handler)
     app.run_polling()
