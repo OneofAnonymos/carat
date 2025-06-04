@@ -1,77 +1,12 @@
 [
   {
     "name": "Nezuko Kamado",
-    "image": "https://i.imgur.com/fOeU71G.jpg",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf9gFZtBMWohJpoUX5-X3EEd4tAqORSv0tYQ&s",
     "rank": "Rare"
   },
   {
     "name": "Mikasa Ackerman",
-    "image": "https://i.imgur.com/5cTzv4y.jpg",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHeMwC5YUHwWO1SbMMCl1Lhiivi1hXe1TQIz0KhFHmYQ&s",
     "rank": "Epic"
   },
-  {
-    "name": "Asuna Yuuki",
-    "image": "https://i.imgur.com/XDNKphf.jpg",
-    "rank": "Epic"
-  },
-  {
-    "name": "Zero Two",
-    "image": "https://i.imgur.com/2xT3J1j.jpg",
-    "rank": "Supreme"
-  },
-  {
-    "name": "Hinata Hyuga",
-    "image": "https://i.imgur.com/z1KgZ5K.jpg",
-    "rank": "Common"
-  },
-  {
-    "name": "Sakura Haruno",
-    "image": "https://i.imgur.com/zHfTWVv.jpg",
-    "rank": "Rare"
-  },
-  {
-    "name": "Rem",
-    "image": "https://i.imgur.com/xsENqOY.jpg",
-    "rank": "Epic"
-  },
-  {
-    "name": "Emilia",
-    "image": "https://i.imgur.com/lIGVjXb.jpg",
-    "rank": "Rare"
-  },
-  {
-    "name": "Rias Gremory",
-    "image": "https://i.imgur.com/fAwxJhc.jpg",
-    "rank": "Supreme"
-  },
-  {
-    "name": "Yor Forger",
-    "image": "https://i.imgur.com/Ib4biZw.jpg",
-    "rank": "Epic"
-  },
-  {
-    "name": "Marin Kitagawa",
-    "image": "https://i.imgur.com/gK5grSh.jpg",
-    "rank": "Epic"
-  },
-  {
-    "name": "Ochaco Uraraka",
-    "image": "https://i.imgur.com/tK8M9J5.jpg",
-    "rank": "Common"
-  },
-  {
-    "name": "Nico Robin",
-    "image": "https://i.imgur.com/9Wyznhy.jpg",
-    "rank": "Rare"
-  },
-  {
-    "name": "Boa Hancock",
-    "image": "https://i.imgur.com/mJZPqF2.jpg",
-    "rank": "Supreme"
-  },
-  {
-    "name": "Tsunade",
-    "image": "https://i.imgur.com/dzKD2zG.jpg",
-    "rank": "Epic"
-  }
 ]
