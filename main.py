@@ -4,6 +4,7 @@ import json
 import os
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.error import TelegramError  # ✅ جای درست
 
 TOKEN = os.getenv("TOKEN")
 if not TOKEN:
@@ -111,17 +112,17 @@ async def mycollection(update: Update, context: ContextTypes.DEFAULT_TYPE):
         msg += f"- {c['name']} ({c['rank']})\n"
     await update.message.reply_text(msg)
 
-# اجرا
+# هندلر خطا
+async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
+    logging.error(msg="⚠️ خطا هنگام اجرای ربات:", exc_info=context.error)
+
+# اجرای ربات
 if __name__ == "__main__":
     app = ApplicationBuilder().token(TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("catch", catch))
     app.add_handler(CommandHandler("mycollection", mycollection))
- from telegram.error import TelegramError
+    app.add_error_handler(error_handler)
 
-async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
-    logging.error(msg="⚠️ خطا هنگام اجرای ربات:", exc_info=context.error)
-
-app.add_error_handler(error_handler)
     app.run_polling()
