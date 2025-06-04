@@ -1,32 +1,30 @@
 import logging import random import json import os from telegram import Update from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-وزن رنک‌ها برای احتمال ظاهر شدن
 
 RARITY_WEIGHTS = { "Common": 60, "Rare": 25, "Epic": 10, "Supreme": 5 }
 
-گرفتن توکن از محیط رندر
+
 
 TOKEN = os.getenv("TOKEN") if not TOKEN: raise ValueError("❌ متغیر محیطی TOKEN تعریف نشده!")
 
 logging.basicConfig(level=logging.INFO)
 
-خواندن کاراکترها از فایل
+
 
 with open("characters.json", "r", encoding="utf-8") as f: CHARACTERS = json.load(f)
 
-وضعیت شخصیت فعال برای هر گروه
 
 active_characters = {}
 
-وضعیت کاربران
+
 
 try: with open("user_data.json", "r") as f: user_data = json.load(f) except: user_data = {}
 
-ذخیره وضعیت کاربران
+
 
 async def save_data(): with open("user_data.json", "w") as f: json.dump(user_data, f)
 
-انتخاب کاراکتر تصادفی بر اساس رنک
+
 
 def select_random_character(): ranked_characters = {} for char in CHARACTERS: rank = char["rank"] ranked_characters.setdefault(rank, []).append(char)
 
@@ -38,7 +36,7 @@ selected_rank = random.choices(
 
 return random.choice(ranked_characters[selected_rank])
 
-ارسال کاراکتر جدید به گروه
+
 
 async def send_character(context: ContextTypes.DEFAULT_TYPE, chat_id=None): if not chat_id: chat_id = context.job.chat_id
 
@@ -56,11 +54,9 @@ await context.bot.send_photo(
     caption=f"✨ یه کاراکتر جدید ظاهر شد!\n👤 نام: ???\n🏆 رنک: {character['rank']}\n⏳ با /catch [نام] امتحان کن! (تا 15 بار)"
 )
 
-شروع ربات
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE): chat_id = update.effective_chat.id await update.message.reply_text("✅ ربات Anime Catcher فعال شد! الان کاراکتر می‌فرستم...") await send_character(context, chat_id=chat_id) context.job_queue.run_repeating(send_character, interval=420, first=420, chat_id=chat_id)
 
-گرفتن کاراکتر
 
 async def catch(update: Update, context: ContextTypes.DEFAULT_TYPE): chat_id = str(update.effective_chat.id) user_id = str(update.effective_user.id) username = update.effective_user.username or user_id
 
@@ -95,11 +91,10 @@ else:
         await update.message.reply_text(f"🔥 کاراکتر {character['name']} از بین رفت. هیچ‌کس درست حدس نزد.")
         del active_characters[chat_id]
 
-کلکسیون من
+
 
 async def mycollection(update: Update, context: ContextTypes.DEFAULT_TYPE): user_id = str(update.effective_user.id) if user_id not in user_data or not user_data[user_id]["characters"]: await update.message.reply_text("📦 هنوز هیچ کاراکتری نگرفتی!") return chars = user_data[user_id]["characters"] msg = f"📚 کلکسیون تو ({len(chars)} شخصیت):\n" for c in chars: msg += f"- {c['name']} ({c['rank']})\n" await update.message.reply_text(msg)
 
-گیفت دادن
 
 async def gift(update: Update, context: ContextTypes.DEFAULT_TYPE): user_id = str(update.effective_user.id) if len(context.args) < 2: await update.message.reply_text("❗️ استفاده صحیح: /gift [username] [نام شخصیت]") return
 
@@ -121,11 +116,11 @@ for c in sender_chars:
 
 await update.message.reply_text("❌ شما این شخصیت رو ندارید!")
 
-هندلر خطا
+
 
 from telegram.error import TelegramError async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None: logging.error(msg="⚠️ خطا هنگام اجرای ربات:", exc_info=context.error)
 
-اجرا
+
 
 if name == "main": app = ApplicationBuilder().token(TOKEN).build()
 
